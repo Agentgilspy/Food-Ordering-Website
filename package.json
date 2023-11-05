@@ -1,0 +1,15 @@
+{
+  "name": "ict-171",
+  "version": "1.0.0",
+  "description": "Food-Ordering Website for my ICT 171 Project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.4",
+    "express": "^4.18.2"
+  }
+}
