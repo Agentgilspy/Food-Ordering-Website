@@ -29,7 +29,6 @@ function addCart(button) {
         }
     }
     localStorage.setItem('cart', JSON.stringify(cart))
-
 }
 
 function createCard(item) {
@@ -82,8 +81,8 @@ function createCard(item) {
                                             <!-- Placing all the Data in the ID , cuz lazy to code more ,  -->
                                             <!-- might be reason code breaks -->
                                             <button id='${item.item_id}&${item.item_name}&${item.price}&${item.image}' type="button"
-                                                class="btn btn-primary mx-1" onclick="addCart(this)">Add
-                                                to cart</button>
+                                                class="btn btn-primary mx-1" onclick="addCart(this)" data-bs-dismiss="modal">
+                                                Add to cart</button>
                                         </div>
 
                                     </div>
