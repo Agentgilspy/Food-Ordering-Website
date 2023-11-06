@@ -49,7 +49,7 @@ function createRow({ item_id, item_name, quantity, image, price }) {
         <img class='border  border-primary border-3 rounded-3' src="${image}" height="60">
     </div>
     <div class="col-2 text-center align-items-center justify-content-center  d-flex">
-        <p class="m-0">${item_name}</p>
+        <h6 class="m-0">${item_name}</h6>
     </div>
     <div class="col-5  d-flex">
         <div class="input-group align-items-center justify-content-center">
