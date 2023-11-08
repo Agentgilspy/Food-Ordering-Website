@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand h1 m-0" href="#">GilFoodieHub</a>
+            <a class="navbar-brand h1 m-0" href="/">GilFoodieHub</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -42,7 +42,42 @@
         </div>
     </nav>
     <div class="container-fluid my-5" id="item-list">
+        <table class="table table-striped">
 
+            <tbody>
+                <tr>
+                    <th scope="row">
+                        <img src="/assets/BG101.png" height="60">
+                    </th>
+                    <td class="text-center align-middle">
+                        <h6 class="m-0">Cheese Burger</h6>
+                    </td>
+                    <td class="text-center align-middle">
+                        <div class="input-group align-items-center justify-content-center">
+                            <button id="BG101&decrease" class="btn btn-outline-secondary rounded-2"
+                                onclick="decreaseQty(this)" type="button">-</button>
+
+                            <input id='quantity' class="form-control rounded-1" type="number" value="${quantity}"
+                                min="1">
+                            <button id="BG101&increase" class="btn btn-outline-secondary rounded-2"
+                                onclick="increaseQty(this)" type="button">+</button>
+                        </div>
+                    </td>
+                    <td class="text-center align-middle">20 AED</td>
+                    <td class="text-center align-middle">
+                        <button id='${item_id}&${item_name}&${price}&${image}' type="button"
+                            class="btn btn-danger mx-1 " onclick="cartRemove(this)">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td colspan="2">Larry the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+            </tbody>
+        </table>
 
     </div>
     <footer class=" my-5 py-5 px-3 bg-secondary-subtle">

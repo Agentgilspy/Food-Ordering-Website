@@ -75,6 +75,6 @@ function createRow({ item_id, item_name, quantity, image, price }) {
 
     for (const item_id of Object.keys(cart)) {
         // Using the spread operator so i can give an object with item_id
-        cartContainer.innerHTML += createRow({ item_id, ...cart[item_id] })
+        // cartContainer.innerHTML += createRow({ item_id, ...cart[item_id] })
     }
 })();
