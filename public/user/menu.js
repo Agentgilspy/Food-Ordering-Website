@@ -24,7 +24,7 @@ function addCart(button) {
         cart[item_id] = {
             item_name,
             quantity: parseInt(qty),
-            price: parseInt(price),
+            price: parseFloat(price),
             image,
         }
     }
