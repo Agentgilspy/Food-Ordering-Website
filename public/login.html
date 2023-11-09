@@ -1,42 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-</head>
-
-<body>
-    <form>
-        <input type="text" id="email" name="email" placeholder="Email"><br><br>
-        <input type="password" id="pwd" name="pwd" placeholder="Password"><br><br>
-
-    </form>
-    <button id="submit">Login</button>
-    <br><br>
-    <a href='/signup'>Don't Have an Account ?</a>
-
-    <script src="/supabase.js"></script>
-    <script>
-        const submitButton = document.getElementById('submit')
-        submitButton.onclick = async () => {
-            const email = document.getElementById('email').value
-            const pwd = document.getElementById('pwd').value
-
-            const { data, error } = await client.auth.signInWithPassword({
-                email: email,
-                password: pwd,
-            })
-            if (error) {
-                console.error(error)
-                alert(error.message)
-                return
-            }
-            location.href = '/'
-        }
-    </script>
-</body>
-
-</html>
+<div class="modal fade" id="loginmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Login</h1>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="text" id="loginemail" name="email" placeholder="Email"><br><br>
+                    <input type="password" id="loginpwd" name="pwd" placeholder="Password"><br><br>
+                </form>
+                <button id="loginsubmit" class="btn btn-primary">Login</button>
+                <br><br>
+                <button class="btn btn-link p-0" onclick="signupmodal()" data-bs-dismiss="modal">
+                    Don't Have an Account ?
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,68 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SignUp</title>
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-
-</head>
-
-<body>
-    <form>
-        <input type="text" id="email" name="email" placeholder="Email"><br><br>
-        <input type="text" id="fname" name="fname" placeholder="Enter Full name"><br><br>
-        <input type="text" id="phonenum" name="fname" placeholder="Enter Phone No (+971 5X XXX XXXX)"><br><br>
-        <input type="password" id="pwd" name="pwd" placeholder="Password (min 7 chars)"><br><br>
-        <input type="password" id="cpwd" name="cpwd" placeholder="Confirm Password"><br><br>
-        <br><br>
-    </form>
-    <button id="submit">Sign Up</button>
-    <script src="/supabase.js"></script>
-    <script>
-        async function signUpNewUser(email, password) {
-            return await client.auth.signUp({
-                email: email,
-                password: password,
-            })
-        }
-
-        const submitButton = document.getElementById('submit')
-        submitButton.onclick = async () => {
-            submitButton.disabled = true
-            const email = document.getElementById('email').value
-            const fname = document.getElementById('fname').value
-            const pwd = document.getElementById('pwd').value
-            const cpwd = document.getElementById('cpwd').value
-            const phonenum = document.getElementById('phonenum').value
-
-            if (!email.includes('@')) return alert('Invalid email')
-            if (pwd.length < 7) return alert('Password too short')
-            if (!fname) return alert('No Name Provided')
-            if (!phonenum) return alert('No Number Provided')
-            if (pwd != cpwd) return alert('Passwords do not match')
-
-            const { data, error } = await signUpNewUser(email, pwd)
-
-            if (error) {
-                console.error(error)
-                return alert(error.message)
-            }
-            const { user, session } = data
-            const result = await client
-                .from('users')
-                .insert({ uid: user.id, email: user.email, full_name: fname, phone_num: phonenum })
-
-            if (result.error) {
-                alert(result.error.message)
-                console.log(result.error)
-                return
-            }
-            location.href = '/'
-        }
-    </script>
-</body>
-
-
-</html>
+<div class="modal fade" id="signupmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Signup</h1>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="text" id="email" name="email" placeholder="Email"><br><br>
+                    <input type="text" id="fname" name="fname" placeholder="Enter Full name"><br><br>
+                    <input type="text" id="phonenum" name="fname" placeholder="Enter Phone No"><br><br>
+                    <input type="password" id="pwd" name="pwd" placeholder="Password (min 7 chars)"><br><br>
+                    <input type="password" id="cpwd" name="cpwd" placeholder="Confirm Password"><br><br>
+                    <br><br>
+                </form>
+                <button class='btn btn-primary' id="submit">Sign Up</button>
+                <br><br>
+                <button class="btn btn-link p-0" onclick="loginmodal()" data-bs-dismiss="modal">
+                    Already Have An Account ?
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
