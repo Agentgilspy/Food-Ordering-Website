@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -13,56 +13,46 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand h1 m-0" href="/">GilFoodieHub</a>
+            <a class="navbar-brand h1 fs-4 m-0" href="/">GilFoodieHub</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 px-3">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 px-5">
+                    <li class="nav-item fw-medium fs-5 ">
+                        <a class="nav-link active fw-medium" aria-current="page" href="/">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item fw-medium fs-5">
                         <a class="nav-link" aria-current="page" href="/menu">Menu</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item fw-medium fs-5">
+                        <a class="nav-link" aria-current="page" href="/trackorder">Track Order</a>
+                    </li>
+                    <li class="nav-item fw-medium fs-5">
                         <a class="nav-link" aria-current="page" href="/contact">Contact</a>
                     </li>
 
                 </ul>
-                <div class="d-flex">
-                    <a class="nav-link" aria-current="page" href="/cart">
-                        <img class="img-fluid" src="/assets/cart.svg" width="30" height="24">
+                <div class="d-flex ">
+                    <a class="nav-link px-2" aria-current="page" href="/cart">
+                        <img class="img-fluid" src="/assets/cart.svg" width="40" height="40">
                     </a>
                 </div>
             </div>
         </div>
     </nav>
     <div class="container">
-        <div id="carouselFoodAuto" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="/assets/home1.jpeg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="/assets/home2.webp" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="/assets/home3.jpeg" class="d-block w-100" alt="...">
-                </div>
+        <div class="row">
+            <div class="col-12">
+                <video autoplay loop muted
+                    src="https://ojttzoncnrqceszmpuxx.supabase.co/storage/v1/object/public/assets/home.mp4"
+                    class="w-100"></video>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselFoodAuto" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselFoodAuto" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
         </div>
+
     </div>
     <footer class=" my-5 py-5 px-3 bg-secondary-subtle">
         <div class="container-fluid">
@@ -74,9 +64,13 @@
             </div>
 
     </footer>
-    <script>
+    <script async>
         (async () => {
             const session = await getSession()
+
+
+
+
         })();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
