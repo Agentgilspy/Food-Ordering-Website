@@ -76,7 +76,7 @@ async function placeorder(button) {
     const creditcard = document.getElementById('creditcard').value
     const address = document.getElementById('deliveryaddress').value || 'Default '
     const loadingicon = document.getElementById('loadingicon')
-    // if (!creditcard && !deliveryaddress) return alert('Please Enter Random Details')
+    if (!creditcard && !deliveryaddress) return alert('Please Enter Random Details')
     const cart = JSON.parse(localStorage.getItem('cart'))
     button.hidden = true
     loadingicon.hidden = false
