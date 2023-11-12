@@ -27,18 +27,17 @@ window.onload = async () => {
     try {
         const session = await getSession()
 
-        const { data, error } = await client
-            .from('orders')
-            .select('order_id, placedAt, cart, status')
+        const res = await fetch(`/vieworders?access_token=${session.access_token}`)
+        const orders = await res.json()
 
-        if (!data) {
+        if (!orders) {
             alert('No Active Orders')
             return location = '/menu'
         }
         const maintable = document.getElementById('main-table')
         const loadingIcon = document.getElementById('loadingicon')
         const tablebody = document.getElementById('tablebody')
-        for (const order of data) {
+        for (const order of orders) {
             tablebody.innerHTML += createRow(order)
         }
         maintable.hidden = false

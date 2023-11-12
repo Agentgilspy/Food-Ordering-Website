@@ -1,6 +1,5 @@
 
 let signuphtml, loginhtml;
-
 const SUPABASE_URL = "https://ojttzoncnrqceszmpuxx.supabase.co"
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9qdHR6b25jbnJxY2Vzem1wdXh4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTkxMTEyOTksImV4cCI6MjAxNDY4NzI5OX0.tm8rKZDUfDelpUZCg3bj1mVaGJyTtv7zm8osZdGDVvw"
 
@@ -19,6 +18,7 @@ async function getSession() {
     return session
 }
 async function signUpNewUser(email, password) {
+
     return await client.auth.signUp({
         email: email,
         password: password,
@@ -35,6 +35,7 @@ async function signupmodal() {
     const submitButton = document.getElementById('submit')
     submitButton.onclick = async () => {
         submitButton.disabled = true
+
         const email = document.getElementById('email').value
         const fname = document.getElementById('fname').value
         const pwd = document.getElementById('pwd').value
@@ -47,23 +48,32 @@ async function signupmodal() {
         if (!phonenum) return alert('No Number Provided')
         if (pwd != cpwd) return alert('Passwords do not match')
 
-        const { data, error } = await signUpNewUser(email, pwd)
+        try {
 
-        if (error) {
-            console.error(error)
-            return alert(error.message)
-        }
-        const { user, session } = data
-        const result = await client
-            .from('users')
-            .insert({ uid: user.id, email: user.email, full_name: fname, phone_num: phonenum })
+            const { data, error } = await signUpNewUser(email, pwd)
 
-        if (result.error) {
-            alert(result.error.message)
-            console.log(result.error)
-            return
+            if (error) throw error
+
+            const { session } = data
+            // Not sending the uid and email since its included in the 
+            // access_token 
+            await fetch(`/createuser?access_token=${session.access_token}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    full_name: fname,
+                    phone_num: phonenum
+                })
+            })
+
+            location.href = '/'
+        } catch (error) {
+            submitButton.disabled = false
+            console.error(error.message)
+            alert(error.message)
         }
-        location.href = '/'
     }
 }
 
