@@ -86,6 +86,7 @@ async function placeorder(button) {
         if (error) throw error
 
         const uid = data.user.id
+        const email = data.user.email
         const { order_id } = await (await fetch('/createOrder', {
             method: 'POST',
             headers: {
@@ -93,7 +94,7 @@ async function placeorder(button) {
             },
             body: JSON.stringify({
                 uid,
-                cart, address
+                cart, address, email
             })
         })).json()
 
@@ -102,6 +103,7 @@ async function placeorder(button) {
         successDiv.innerHTML = `Your order has been placed you can track it
         <a href="/trackorder?order_id=${order_id}"> here</a>`
         successDiv.hidden = false
+        localStorage.removeItem('cart') // To reset the cart
 
     } catch (error) {
         loadingicon.hidden = true
