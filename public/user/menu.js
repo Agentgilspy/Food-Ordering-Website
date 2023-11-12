@@ -75,7 +75,7 @@ function createCard(item) {
                                             <button class="btn btn-outline-secondary" onclick="decreaseQty(this)"
                                                 type="button">-</button>
 
-                                            <input id='quantity' class="form-control" type="number" value="1" min="1">
+                                            <input  class="form-control" type="number" value="1" min="1">
                                             <button class="btn btn-outline-secondary" onclick="increaseQty(this)"
                                                 type="button">+</button>
                                             <!-- Placing all the Data in the ID , cuz lazy to code more ,  -->
