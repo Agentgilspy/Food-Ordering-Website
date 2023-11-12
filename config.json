@@ -1,0 +1,6 @@
+{
+    "port": 3000,
+    "supabase_url": "",
+    "supabase_service_role": "",
+    "jwt_secret": ""
+}
