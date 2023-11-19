@@ -2,7 +2,7 @@
 // don't have to store the message in the database
 const statusMessages = {
     1: 'Order Confirmed', 2: 'Food is being prepared',
-    3: 'Out of delivery', 4: 'Delivered'
+    3: 'Out for delivery', 4: 'Delivered'
 }
 
 function createRow({ order_id, placedAt, cart, status }) {
@@ -30,7 +30,7 @@ window.onload = async () => {
         // Sends a get request to the server with access token in the request query
         const res = await fetch(`/vieworders?access_token=${session.access_token}`)
         const orders = await res.json() // Returns an array of orders 
-        if (!orders) {
+        if (orders.length == 0) {
             // Redirects to the menu if there are no orders
             alert('No Active Orders')
             return location = '/menu'
