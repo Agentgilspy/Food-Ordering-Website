@@ -41,7 +41,7 @@ function addCart(button) {
 
 function createCard(item) {
     return `
-    <div class="col-3 gy-3" >
+    <div class="col-sm-3 gy-3" >
                 <div class="card">
                     <img src="${item.image}" class="card-img-top rounded-3 " >
                     <div class="card-body text-center">
