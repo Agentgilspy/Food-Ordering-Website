@@ -60,7 +60,7 @@ async function signupmodal() {
             // to create signUp a new user 
             const { data, error } = await client.auth.signUp({
                 email: email,
-                password: password,
+                password: pwd,
             })
 
             if (error) throw error
