@@ -1,23 +1,30 @@
 function increaseQty(button) {
+    // Button to increase the quantity
+    // Gets the input element and increments its value
+    // No values above 50 allowed 
     const input = button.parentElement.getElementsByTagName('input')[0]
+    if (input.value == 50) return
     input.value = parseInt(input.value) + 1
 }
 function decreaseQty(button) {
+    // Same as increaseQty 
     const input = button.parentElement.getElementsByTagName('input')[0]
-    if (input.value == 1) return
+    if (input.value == 1) return // To avoid negative
     input.value = parseInt(input.value) - 1
-
 }
-
+// Function to add items to the cart from the menu
 function addCart(button) {
+    // Gets the variables which are stored in the button id
+    // and qty from input element
     const [item_id, item_name, price, image] = button.id.split('&')
+
     const qty = button.parentElement.getElementsByTagName('input')[0].value
-    if (qty < 0) return;
-    if (qty > 50) return;
+
+    // The cart is stored in the browser's local storage in the form of JSON
+    // The following code just adds entries to the JSON object
     let cart = localStorage.getItem('cart')
     if (!cart) cart = {}
     else cart = JSON.parse(cart)
-
     if (cart[item_id]) {
         cart[item_id]['quantity'] += parseInt(qty)
     } else {
@@ -28,6 +35,7 @@ function addCart(button) {
             image,
         }
     }
+    // Sets the item in localstorage
     localStorage.setItem('cart', JSON.stringify(cart))
 }
 
@@ -75,7 +83,7 @@ function createCard(item) {
                                             <button class="btn btn-outline-secondary" onclick="decreaseQty(this)"
                                                 type="button">-</button>
 
-                                            <input  class="form-control" type="number" value="1" min="1">
+                                            <input  class="form-control" type="number" value="1" min="1" readonly>
                                             <button class="btn btn-outline-secondary" onclick="increaseQty(this)"
                                                 type="button">+</button>
                                             <!-- Placing all the Data in the ID , cuz lazy to code more ,  -->
@@ -97,20 +105,25 @@ function createCard(item) {
             </div>
     `;
 }
-(async () => {
-    const session = await getSession()
-    const { data, error } = await client
-        .from('menu')
-        .select()
-    if (error) {
-        alert(error.message)
+
+// Function runs on window load
+window.onload = async () => {
+    // Gets the login session of the user
+    await getSession()
+    try {
+        // API request to our /menuitems endpoints and
+        // gets all the items in an Array []
+        const data = (await (await fetch('/menuitems')).json())
+        document.getElementById('loadingicon').remove()
+        const item_list = document.getElementById('item-list')
+        for (const item of data) {
+            // Iterates through the Array runs the create card
+            // function on each item
+            item_list.innerHTML += createCard(item)
+        }
+    } catch (error) {
+        alert(error)
         console.error(error)
-        return
-    }
-    document.getElementById('loadingicon').remove()
-    const item_list = document.getElementById('item-list')
-    for (const item of data) {
-        item_list.innerHTML += createCard(item)
     }
 
-})();
+}
