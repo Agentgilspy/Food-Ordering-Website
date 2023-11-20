@@ -1,7 +1,7 @@
 
 let signuphtml, loginhtml;
-const SUPABASE_URL = "https://wwewpmhnxrvfswuycedt.supabase.co"
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind3ZXdwbWhueHJ2ZnN3dXljZWR0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA0NDQ5MjMsImV4cCI6MjAxNjAyMDkyM30.zDWW1eP1nJKkw16BdRgbcUq9AS-dN8-XDxwH-ctYZMo"
+const SUPABASE_URL = "https://ojttzoncnrqceszmpuxx.supabase.co"
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9qdHR6b25jbnJxY2Vzem1wdXh4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTkxMTEyOTksImV4cCI6MjAxNDY4NzI5OX0.tm8rKZDUfDelpUZCg3bj1mVaGJyTtv7zm8osZdGDVvw"
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY)
 
